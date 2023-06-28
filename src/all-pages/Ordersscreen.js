@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserOrders } from "../actions/orderActions";
 import Error from "../Components/Error";
-import Success from "../Components/Success";
 import Loading from "../Components/Loading";
 
 export default function Ordersscreen() {
@@ -30,9 +29,11 @@ export default function Ordersscreen() {
         {error && <Error error="Something Went Wrong" />}
         {orders &&
           orders.map((order) => {
+            console.log(order.isDelivered);
             return (
               <div
                 className="col-md-8"
+                data-aos="fade-down"
                 style={{ backgroundColor: "aqua", color: "black" }}
               >
                 <div className="flex-container">
@@ -43,12 +44,16 @@ export default function Ordersscreen() {
                       return (
                         <div>
                           <h1>
-                            {item.name} [{item.sizes}] * {item.quantity} =
+                            {item.name} [{item.sizes}] * {item.quantity} ={" "}
                             {item.price}
                           </h1>
                         </div>
                       );
                     })}
+                    <p>
+                      Order Status :{" "}
+                      {order.isDelivered ? "DELIVERED" : "SHIPPING"}
+                    </p>
                   </div>
                   <div className="text-left w-100 m-1">
                     <h2 style={{ fontSize: "25px" }}>Address</h2>
@@ -63,7 +68,7 @@ export default function Ordersscreen() {
                     <hr />
                     <h1>Order Amount : {order.orderAmount} </h1>
                     <h1>Date : {order.createAt.substring(0, 10)} </h1>
-                    <h1>Transaction Id : {order.transactionid} </h1>
+                    <h1>Transaction Id : {order.transactionId} </h1>
                     <h1>Order Id : {order._id} </h1>
                   </div>
                 </div>

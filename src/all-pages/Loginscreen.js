@@ -25,7 +25,6 @@ export default function Loginscreen() {
   const [password, setPassword] = useState("");
   const loginstate = useSelector((state) => state.loginUserReducer);
   const { loading, error } = loginstate;
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -41,9 +40,6 @@ export default function Loginscreen() {
 
   return (
     <div className="login">
-      <br />
-      <br />
-      <br />
       <br />
       <br />
       <br />
@@ -75,6 +71,11 @@ export default function Loginscreen() {
                 setPassword(e.target.value);
               }}
             />
+            <br />
+            <p>
+              Admin : vigneshwar@gmail.com <br />
+              password : 12345
+            </p>
 
             <button onClick={login} className="btn btn-success mt-4 mb-4">
               LOGIN

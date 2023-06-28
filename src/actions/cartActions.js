@@ -1,12 +1,12 @@
-export const addToCart = (dress, quantity, sizes) => (dispatch, getState) => {
+export const addToCart = (dress, quantity, size) => (dispatch, getState) => {
   var cartItem = {
     name: dress.name,
     _id: dress._id,
     image: dress.img,
-    sizes: sizes,
+    size: size,
     quantity: Number(quantity),
     prices: dress.prices,
-    price: dress.prices[0][sizes] * quantity,
+    price: dress.prices[0][size] * quantity,
   };
 
   if (cartItem.quantity > 10) {

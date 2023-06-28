@@ -1,13 +1,14 @@
 import "./App.css";
-import Navbar from "./Components/Navbar";
-import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import bootstrap from "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap";
+import { BrowserRouter, Route } from "react-router-dom";
+import Navbar from "./Components/Navbar";
 import Home from "./all-pages/Home";
-import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
 import Cartscreen from "./all-pages/Cartscreen";
 import Registerscreen from "./all-pages/Registerscreen";
 import Loginscreen from "./all-pages/Loginscreen";
 import Ordersscreen from "./all-pages/Ordersscreen";
+import Adminscreen from "./all-pages/Adminscreen";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/register" exact component={Registerscreen} />
         <Route path="/login" exact component={Loginscreen} />
         <Route path="/orders" exact component={Ordersscreen} />
+        <Route path="/admin" exact component={Adminscreen} />
       </BrowserRouter>
     </div>
   );

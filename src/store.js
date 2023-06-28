@@ -1,14 +1,23 @@
 import { combineReducers } from "redux";
-import { applyMiddleware } from "redux";
-import { legacy_createStore as createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
-import { getAllDressesReducer } from "./reducers/dressReducers";
+import {
+  getAllDressesReducer,
+  addDressReducer,
+  getDressByIdReducer,
+  editDressReducer,
+} from "./reducers/dressReducers";
 import { cartReducer } from "./reducers/cartReducer";
-import { loginUserReducer, registerUserReducer } from "./reducers/userReducer";
+import {
+  loginUserReducer,
+  registerUserReducer,
+  getAllUsersReducer,
+} from "./reducers/userReducer";
 import {
   placeOrderReducer,
   getUserOrdersReducer,
+  getAllOrdersReducer,
 } from "./reducers/orderReducer";
 
 const finalReducer = combineReducers({
@@ -18,14 +27,19 @@ const finalReducer = combineReducers({
   loginUserReducer: loginUserReducer,
   placeOrderReducer: placeOrderReducer,
   getUserOrdersReducer: getUserOrdersReducer,
+  addDressReducer: addDressReducer,
+  getDressByIdReducer: getDressByIdReducer,
+  editDressReducer: editDressReducer,
+  getAllOrdersReducer: getAllOrdersReducer,
+  getAllUsersReducer: getAllUsersReducer,
 });
 
-const currentUser = localStorage.getItem("currentUser")
-  ? JSON.parse(localStorage.getItem(currentUser))
-  : null;
 const cartItems = localStorage.getItem("cartItems")
   ? JSON.parse(localStorage.getItem("cartItems"))
   : [];
+const currentUser = localStorage.getItem("currentUser")
+  ? JSON.parse(localStorage.getItem("currentUser"))
+  : null;
 
 const initialState = {
   cartReducer: {
@@ -37,7 +51,6 @@ const initialState = {
 };
 
 const composeEnhancers = composeWithDevTools({});
-
 const store = createStore(
   finalReducer,
   initialState,

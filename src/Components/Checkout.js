@@ -9,11 +9,14 @@ import Success from "../Components/Success";
 export default function Checkout({ subtotal }) {
   const orderstate = useSelector((state) => state.placeOrderReducer);
   const { loading, error, success } = orderstate;
+
   const dispatch = useDispatch();
+
   function tokenHander(token) {
     console.log(token);
     dispatch(placeOrder(token, subtotal));
   }
+
   return (
     <div>
       {loading && <Loading />}

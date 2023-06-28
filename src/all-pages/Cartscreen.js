@@ -7,9 +7,10 @@ import Checkout from "../Components/Checkout";
 export default function Cartscreen() {
   const cartstate = useSelector((state) => state.cartReducer);
   const cartItems = cartstate.cartItems;
-
   var subtotal = cartItems.reduce((x, item) => x + item.price, 0);
+
   const dispatch = useDispatch();
+
   return (
     <div>
       <br />
@@ -19,7 +20,7 @@ export default function Cartscreen() {
       <br />
       <br />
       <br />
-      <div className="row justify-content-center">
+      <div className="row justify-content-center p-2" data-aos="fade-down">
         <div className=" col-md-6">
           <h2 style={{ fontSize: "40px" }}>My Cart</h2>
           <br />

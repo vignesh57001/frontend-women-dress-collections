@@ -16,7 +16,7 @@ export default function Registerscreen() {
   const dispatch = useDispatch();
 
   function register() {
-    if (password != cpassword) {
+    if (password !== cpassword) {
       alert("Password And Confirm Password Doesn't Matched");
     } else {
       const user = {
@@ -69,7 +69,7 @@ export default function Registerscreen() {
               }}
             />
             <input
-              type="text"
+              type="password"
               placeholder="password"
               required="required"
               className="form-control"
@@ -79,7 +79,7 @@ export default function Registerscreen() {
               }}
             />
             <input
-              type="text"
+              type="password"
               placeholder="confirm password"
               required="required"
               className="form-control"
